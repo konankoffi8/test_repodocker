@@ -1,0 +1,28 @@
+version: '3'
+services:
+  db:
+    image: redis
+    ports:
+      - "6379:6379"
+    #volumes:
+     # - db_data:/var/lib/redis
+    restart: always
+
+#   environment:
+#      REDIS_PASSWORD: donatienkonan2023
+
+  app:
+    depends_on:
+      - db
+    image: studentusecase
+
+    ports:
+      - "5000:5000"
+
+    restart: always
+
+#   environment:
+#     APP_PASSWORD: donatienkonan2023
+
+#volumes:
+ # db_data: {}
